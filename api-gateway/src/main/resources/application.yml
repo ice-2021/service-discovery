@@ -1,0 +1,17 @@
+server:
+  port: 8111
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+      - id: helloworld-microservice
+        uri: lb://helloworld-microservice
+        predicates:
+        - Path=/helloworld/**
+        
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka
